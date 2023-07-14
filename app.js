@@ -3,7 +3,7 @@ let srcArray=['bolt','bomb','coin','heart','jewel','potion','shield','sword','bo
 
 // init board grid
 function initBoard() {
-    let tempSrc = srcArray // use splice
+    let tempSrc = [...srcArray] // either spread to clone or use stringify and parse
     for (let index = 0; index < 16; index++) {
         let image_index = Math.floor(Math.random()*(tempSrc.length-1))
         // card container
@@ -31,31 +31,41 @@ function initBoard() {
     }
 }
 initBoard()
-
+addBehavior()
 // card flip logic
 let card1=''
 let card2=''
 // flip test
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click',()=>{
-        if (card1=='' && !card.classList.contains('flip')) { // check card is not already flipped, it causes reflip of already matched cards
-            card1=card
-            card.classList.add('flip')
-        } else if(card1!=card && card2=='' && !card.classList.contains('flip')){ // check card is not already flipped
-            card2=card
-            card.classList.add('flip')
-            if (card1.lastChild.firstChild.src==card2.lastChild.firstChild.src) {
-                console.log('match')
-                card1=''
-                card2=''
-            }else{
-                setTimeout(() => {
-                    card1.classList.remove('flip')
-                    card2.classList.remove('flip')
+
+function addBehavior() {
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click',()=>{
+            if (card1=='' && !card.classList.contains('flip')) { // check card is not already flipped, it causes reflip of already matched cards
+                card1=card
+                card.classList.add('flip')
+            } else if(card1!=card && card2=='' && !card.classList.contains('flip')){ // check card is not already flipped
+                card2=card
+                card.classList.add('flip')
+                if (card1.lastChild.firstChild.src==card2.lastChild.firstChild.src) { // match
                     card1=''
                     card2=''
-                }, 1000);
+                }else{
+                    setTimeout(() => {
+                        card1.classList.remove('flip')
+                        card2.classList.remove('flip')
+                        card1=''
+                        card2=''
+                    }, 1000);
+                }
             }
-        }
-    })
-});
+        })
+    });
+}
+
+document.querySelector('#new').addEventListener('click',()=>{
+    document.querySelector('.board').innerHTML='';
+    card1='';
+    card2='';
+    initBoard();
+    addBehavior();
+})

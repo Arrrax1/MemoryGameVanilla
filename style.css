@@ -1,8 +1,11 @@
 body {
+    height: 100vh;
     margin: 0;
     background: url('assets/woodBackground.jpg');
     background-attachment: fixed;
     background-size: cover;
+    display: grid;
+    place-content: center;
 }
 
 .board {
@@ -10,6 +13,7 @@ body {
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: repeat(4, 120px);
     place-content: center;
+    gap: 4px;
 }
 
 .card {
@@ -18,26 +22,44 @@ body {
     transition: all ease 400ms;
     transform-style: preserve-3d;
     justify-self: center;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .card_back {
     height: 50px;
-    position: absolute
+    position: absolute;
 }
 
 .card_front {
-    background-color: green;
     height: 50px;
     position: absolute;
     transform: translateZ(-1px);
 }
 
 img {
-    width: 100%;
+    width: 95%;
     aspect-ratio: 13/17;
+    border-radius:4px;
+    border:2px solid whitesmoke;
+    border-radius:6px;
+    margin: 0;
 }
 
 .flip {
     transform: rotateY(180deg);
+}
+
+button{
+    background-color: wheat;
+    color: #252525;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    border: 1px solid #191919;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px;
+}
+button:active{
+    scale: 0.95;
 }
