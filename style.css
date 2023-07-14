@@ -23,6 +23,7 @@ body {
     transform-style: preserve-3d;
     justify-self: center;
     cursor: pointer;
+    transition: all 500ms ease ;
 }
 
 .card_back {
