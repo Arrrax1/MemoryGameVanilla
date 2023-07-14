@@ -1,22 +1,43 @@
-body{
+body {
     margin: 0;
     background: url('assets/woodBackground.jpg');
     background-attachment: fixed;
     background-size: cover;
 }
 
-.board{
+.board {
     display: grid;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: repeat(4, 120px);
     place-content: center;
 }
 
-.card{position: relative;width: 90px;transition: all ease 400ms;transform-style: preserve-3d;justify-self: center;}
+.card {
+    position: relative;
+    width: 90px;
+    transition: all ease 400ms;
+    transform-style: preserve-3d;
+    justify-self: center;
+    cursor: pointer
+}
 
-.card_back{height: 50px;position: absolute}
-.card_front{background-color: green;height: 50px;position: absolute;transform: translateZ(-1px);}
+.card_back {
+    height: 50px;
+    position: absolute
+}
 
-img{width: 100%;aspect-ratio: 13/17;}    
+.card_front {
+    background-color: green;
+    height: 50px;
+    position: absolute;
+    transform: translateZ(-1px);
+}
 
-.flip{transform: rotateY(180deg);}
+img {
+    width: 100%;
+    aspect-ratio: 13/17;
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
