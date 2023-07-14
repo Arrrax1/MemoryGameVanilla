@@ -64,8 +64,22 @@ function addBehavior() {
 
 document.querySelector('#new').addEventListener('click',()=>{
     document.querySelector('.board').innerHTML='';
-    card1='';
-    card2='';
     initBoard();
     addBehavior();
+    card1='';
+    card2='';
+    // Animation
+    let myStyleSheet = document.styleSheets[0]
+    let myRule=''
+    for(rule of myStyleSheet.cssRules){
+        rule.selectorText==='.board' ? myRule=rule : ''
+    }
+    // you can set transition for only certain things, that's why I animated only the width
+    myRule.style.gridTemplateColumns= 'repeat(4, 0px)'
+    myRule.style.gridTemplateRows= 'repeat(4, 0px)'
+
+    setTimeout(() => { 
+        myRule.style.gridTemplateColumns= 'repeat(4, 100px)'
+        myRule.style.gridTemplateRows= 'repeat(4, 120px)'
+    }, 700);
 })

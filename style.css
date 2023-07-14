@@ -14,12 +14,12 @@ body {
     grid-template-rows: repeat(4, 120px);
     place-content: center;
     gap: 4px;
+    transition: all 500ms ease ;
 }
 
 .card {
     position: relative;
     width: 90px;
-    transition: all ease 400ms;
     transform-style: preserve-3d;
     justify-self: center;
     cursor: pointer;
